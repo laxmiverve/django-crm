@@ -11,6 +11,8 @@
     {% block content %}
    
         {% if user.is_authenticated %}
+        <div class="user-info">
+          Welcome, {{ user.username }}
         <h1>User Information</h1>
         <table class="table table-hover table-bordered">
           <thead>

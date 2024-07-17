@@ -72,8 +72,8 @@ def add_record(request):
 		messages.success(request, "You Must Be Logged In...")
 		return redirect('home')
 
-
-
+           
+        
 def delete_record(request, pk):
      if request.user.is_authenticated: 
         delete_it = Record.objects.get(id = pk)

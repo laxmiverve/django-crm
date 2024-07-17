@@ -14,6 +14,9 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'logout' %}">Logout</a>
           </li>
+          <strong><li class="nav-item">
+            <a class="nav-link">Username: {{ user.username }}</a>
+        </li></strong>
           {% else %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'register' %}">Register</a>
