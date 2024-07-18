@@ -1,7 +1,9 @@
 from django.db import models
+from django.contrib.auth.models import User
 
-# database model 
+
 class Record(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
     name = models.CharField(max_length=50)
     email = models.EmailField(max_length=50)
     password = models.CharField(max_length=20)
