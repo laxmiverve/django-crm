@@ -4,10 +4,15 @@ from django import forms
 from .models import Record
 
 class RegisterForm(UserCreationForm):
-    email = forms.EmailField(
-        required=False,  # Make the email field optional
+    username = forms.CharField(
+        required=False,  
         label="",
-        widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Email Address'})
+        widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Username'})
+    )
+    email = forms.EmailField(
+        required=True,  
+        label="",
+        widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Username'})
     )
 
     class Meta:
@@ -20,7 +25,12 @@ class RegisterForm(UserCreationForm):
         self.fields['username'].widget.attrs['class'] = 'form-control'
         self.fields['username'].widget.attrs['placeholder'] = 'User Name'
         self.fields['username'].label = ''
-        self.fields['username'].help_text = '<span class="form-text text-muted"><small>Required. 50 characters or fewer. Letters, digits and @/./+/-/_ only.</small></span>'
+        self.fields['username'].help_text = '<span class="form-text text-muted"><small>Optional. 50 characters or fewer. Letters, digits and @/./+/-/_ only.</small></span>'
+
+        self.fields['email'].widget.attrs['class'] = 'form-control'
+        self.fields['email'].widget.attrs['placeholder'] = 'User Email'
+        self.fields['email'].label = ''
+        self.fields['email'].help_text = '<span class="form-text text-muted"><small>Required</small></span>'
 
         self.fields['password1'].widget.attrs['class'] = 'form-control'
         self.fields['password1'].widget.attrs['placeholder'] = 'Password'
@@ -66,9 +76,9 @@ class AddRecordForm(forms.ModelForm):
 
     phone = forms.CharField(required=True, widget = forms.widgets.TextInput(attrs={"placeholder":"Phone", "class":"form-control"}), label="")
 
-    city = forms.CharField(required=True, widget = forms.widgets.TextInput(attrs={"placeholder":"City", "class":"form-control"}), label="")
+    city = forms.CharField(required=False, widget = forms.widgets.TextInput(attrs={"placeholder":"City", "class":"form-control"}), label="")
 
-    state = forms.CharField(required=True, widget = forms.widgets.TextInput(attrs={"placeholder":"State", "class":"form-control"}), label="")
+    state = forms.CharField(required=False, widget = forms.widgets.TextInput(attrs={"placeholder":"State", "class":"form-control"}), label="")
 
     country = forms.CharField(required=True, widget = forms.widgets.TextInput(attrs={"placeholder":"Country", "class":"form-control"}), label="")
 
