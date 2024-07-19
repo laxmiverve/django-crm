@@ -9,9 +9,15 @@ from django.contrib.auth.decorators import login_required
 
 def home(request):
     if request.user.is_authenticated:
-        userInfos = Record.objects.filter(user=request.user)
+        if request.user.is_superuser:
+            userInfos = Record.objects.all()
+        else:
+            userInfos = Record.objects.filter(user=request.user)
     else:
         userInfos = None
+    #     userInfos = Record.objects.filter(user=request.user)
+    # else:
+    #     userInfos = None
     
     if request.method == "POST":
         username = request.POST['username']
