@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-3b1ny*tpbhwn(6s3h80gpg8t5plw1ay8^z3lkxvbbw0li+nnmb
 DEBUG = True
 
                                               
-ALLOWED_HOSTS = ["0.0.0.0", 'localhost', '127.0.0.1']
+# ALLOWED_HOSTS = ["0.0.0.0", 'localhost', '127.0.0.1']
 # python manage.py runserver 0.0.0.0:8000   Use IP address instead of 0.0.0.0
 
 # Application definition
