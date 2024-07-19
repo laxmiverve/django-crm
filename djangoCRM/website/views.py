@@ -4,6 +4,7 @@ from django.contrib import messages
 from .forms import RegisterForm, AddRecordForm
 from .models import Record
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 
 
@@ -15,20 +16,26 @@ def home(request):
             userInfos = Record.objects.filter(user=request.user)
     else:
         userInfos = None
-    #     userInfos = Record.objects.filter(user=request.user)
-    # else:
-    #     userInfos = None
-    
+
     if request.method == "POST":
-        username = request.POST['username']
+        login_credential = request.POST['username']
         password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
+
+        # authenticate with the username
+        user = authenticate(request, username=login_credential, password=password)
+
+        # If username not exist, try to authenticate with the email
+        if user is None:
+            user_with_email = User.objects.filter(email=login_credential).first()
+            if user_with_email:
+                user = authenticate(request, username=user_with_email.username, password=password)
+
         if user is not None:
             login(request, user)
             messages.success(request, "You are logged in")
             return redirect('home')
         else:
-            messages.error(request, "Invalid username or password")
+            messages.error(request, "Invalid username/email or password")
             return redirect('home')
     else:
         return render(request, 'home.html', {'userInfos': userInfos})
