@@ -43,8 +43,8 @@ class RegisterForm(UserCreationForm):
 
         if password1.isdigit():
             raise forms.ValidationError("Your password can't be entirely numeric.")
-
         return password1
+    
 
     def clean(self):
         cleaned_data = super().clean()
@@ -53,7 +53,6 @@ class RegisterForm(UserCreationForm):
 
         if password1 and password2 and password1 != password2:
             self.add_error('password2', "Passwords do not match")
-
         return cleaned_data
     
 
