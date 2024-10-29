@@ -9,7 +9,7 @@ When you create a virtual envirnoment in python. Whatever you installed in virtu
 
 ## Create a Django Project
 
-- `django-admin startproject < project_name >` -> To create a project in django . in my case my project name is myProject
+- `django-admin startproject < project_name >` -> To create a project in django . in my case my project name is django-crm
 - `python manage.py runserver` -> To run the Django project
 - `python manage.py runserver < port_number >` -> To run on a specific port. By default django run on port 8000.
 - `python manage.py startapp < app_name >` -> To create an app. In a Django project you can create multiple app.
@@ -27,6 +27,7 @@ When you create a virtual envirnoment in python. Whatever you installed in virtu
         `asgi.py`
         `wsgi.py`
 ```
+
 Remember: When you use the command startapp to only creates the app file. And the main project did not aware of this.
 So you have to add the app in the main project. To do this you have to add
 `<app_name>` in the INSTALLED_APPS in the settings.py file.
