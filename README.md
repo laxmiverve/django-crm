@@ -13,14 +13,14 @@ When you create a virtual envirnoment in python. Whatever you installed in virtu
 - `python manage.py runserver` -> To run the Django project
 - `python manage.py runserver < port_number >` -> To run on a specific port. By default django run on port 8000.
 - `python manage.py startapp < app_name >` -> To create an app. In a Django project you can create multiple app.
-  in my case my app name is demoApp
+  in my case my app name is crm-app
 
 ## Project Structure
 
 ```
- `myProject/` ----> root directory is a container for your project. you can rename it
+ `django-crm/` ----> root directory is a container for your project. you can rename it
     `manage.py` ----> command-line utility that lets you interact with this Django project
-    `myProject/` ----> actual Python package for your project
+    `crm-app/` ----> actual Python package for your project
         `init.py` ----> An empty file that tells Python that this directory should be considered a Python package
         `settings.py` ----> configuration for this Django project.
         `urls.py` -----> All urls are configured here. It also used to transfer the control to the url.py of app
